@@ -91,7 +91,7 @@ public class PlatformImpl {
         private final ModInfo info;
         
         public ModImpl(String id) {
-            this.container = ModList.get().getModContainerById(id).get();
+            this.container = ModList.get().getModContainerById(id).orElseThrow(NullPointerException::new);
             this.info = ModList.get().getMods().stream()
                     .filter(modInfo -> Objects.equals(modInfo.getModId(), id))
                     .findAny()

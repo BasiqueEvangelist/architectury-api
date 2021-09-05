@@ -88,7 +88,7 @@ public class PlatformImpl {
         private final ModMetadata metadata;
         
         public ModImpl(String id) {
-            this.container = FabricLoader.getInstance().getModContainer(id).get();
+            this.container = FabricLoader.getInstance().getModContainer(id).orElseThrow(NullPointerException::new);
             this.metadata = this.container.getMetadata();
         }
         
